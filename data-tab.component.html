@@ -1,0 +1,58 @@
+<app-data-com  (dropdownCreated)="newFuncForALl()"  
+(dropdownCreated1)="newFuncForALl()"
+(dropdownCreated2)="newFuncForALl()"> </app-data-com>
+<!-- <div (dropdownCreated)="newFuncForALl()"  
+(dropdownCreated1)="newFuncForALl()"></div> -->
+<button type="button" class="btn btn-success" (click)="downloadAllFile()">Download</button>
+
+<ngb-tabset (tabChange)="dataSorting1($event)" >
+    <ngb-tab *ngFor="let pr of tabSetCategory;let i=index"  id="{{pr.name}}"   title={{pr.name}}   >
+     
+      <ng-template ngbTabContent >
+      
+         <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th scope="col" sortable="series" (click)="onSort('series')" >series</th>
+                  <th scope="col" sortable="document_category" (click)="onSort('document_category')">document_category</th>
+                  <th scope="col" sortable="catagory" (click)="onSort('catagory')">catagory</th>
+                  <th scope="col" sortable="date" (click)="onSort('date')">date</th>
+                  <th scope="col" sortable="description" (click)="onSort('description')">description</th>
+                  <th scope="col" sortable="title" (click)="ngOnChanges()"><input name="select_all" value="1" type="checkbox"  id={{title}} />title</th>
+                  <th scope="col" sortable="type" (click)="onSort('type')">type</th>
+                </tr>
+               
+        
+                </thead>
+                <tbody >
+                  <tr *ngFor="let prr of allDatacopy;let i=index" >
+                      
+                   
+                    <td > 
+          
+                      {{ prr.series }}
+                    </td>
+                    <td>{{ prr.documentCategory}}</td>
+                    <td>{{ prr.catagory}}</td>
+                    <td>{{ prr.date}}</td>
+                    <td>{{ prr.description}}</td>
+                    <a href="http://localhost:8087/file/{{prr.title}}" download > <td (click)="filesDown(prr.title)"><input type="checkbox" [checked]="prr.title.checked" id={{prr.series}} /> {{ prr.title }} <img  class="imgdes" src="https://img.icons8.com/plasticine/100/000000/down.png" style="width:10px;height:10px;"></td></a>
+                   
+                    <td>{{ prr.type}}</td>
+               
+                  </tr>
+               
+                </tbody>
+    
+          </table>
+
+      </ng-template>
+    </ngb-tab>
+
+   
+  
+    
+   
+  </ngb-tabset>
+  <ngb-pagination [collectionSize]="pageSize"  [(page)]="page" aria-label="Default pagination" [directionLinks]="false" (click)="pagination($event)"></ngb-pagination>
+ 

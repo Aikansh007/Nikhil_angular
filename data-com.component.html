@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem class="form-check-label" *ngFor="let prr of dropDownType;let i=index" (click)="loadMyChildComponent1(prr.name);"><input type="checkbox" [checked]="prr.name.checked" id={{prr.name}}/>{{prr.name}}</button>
+         
+        </div>
+      </div>
+     
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle >Toggle dropup</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic2" >
+            <button ngbDropdownItem  *ngFor="let pr of dropDown;let i=index" (click)="loadMyChildComponent(pr.name);"><input type="checkbox" [checked]="pr.name.checked" id={{pr.name}}/>{{pr.name}}</button>
+       
+       
+  
+      </div>
+   
+    </div>
+    
+    </div>
+
+<span>
+    <div  style="width:300px;height:20px;">
+        <div class="input-group" style="width:200px;height:30px;">
+            <input class="form-control" placeholder="yyyy-mm-dd   From"
+                   name="dp"  ngbDatepicker #d="ngbDatepicker"  (click) ="ngOnChanges1($event)" >
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+           
+          </div>
+         
+    </div>
+    <p > to</p>   
+    <div style="width:300px;height:20px;">
+     
+      <div class="input-group" style="width:200px;height:30px;">
+          <input class="form-control" placeholder="yyyy-mm-dd   to"
+                 name="dp"  ngbDatepicker #d1="ngbDatepicker"  (click) ="ngOnChanges2($event)" >
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
+          </div>
+        </div>
+       
+  </div>
+  </span>
+  
+ 
+  </div>
+  <div>
+  <span *ngFor="let ar of checkedvar;">    {{ar}}   </span>
+  <span *ngFor="let ar1 of checkedvar1;">   {{ar1}}    </span>
+</div>
+<!-- <app-data-tab (dropdownCreated)="newFuncForALl()"  
+(dropdownCreated1)="newFuncForALl()"
+></app-data-tab> -->
